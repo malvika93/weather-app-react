@@ -42,7 +42,7 @@ function App() {
         <div className="container">
           <div className="top">
             <div className="location">
-              <p className="bold">{data.name}, {data.sys.country}</p>
+              <p className="bold">{data.name}{data.sys ? ', ' + data.sys.country : null}</p>
             </div>
             <div className="temp">
               {data.main ? <h1>{data.main.temp}&deg;C</h1> : null}
@@ -52,7 +52,7 @@ function App() {
             </div>
           </div>
 
-          {data.name != undefined && (
+          {data.name !== undefined && (
             <div className="bottom">
               <div className="feels">
                 {data.main ? (
