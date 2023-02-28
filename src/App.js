@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import moment from "moment";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
@@ -42,13 +43,18 @@ function App() {
         <div className="container">
           <div className="top">
             <div className="location">
-              <p className="bold">{data.name}{data.sys ? ', ' + data.sys.country : null}</p>
+              <p className="bold">
+                {data.name}
+                {data.sys ? ", " + data.sys.country : null}
+              </p>
             </div>
             <div className="temp">
               {data.main ? <h1>{data.main.temp}&deg;C</h1> : null}
             </div>
             <div className="description">
-              {data.weather ? <p className="bold">{data.weather[0].main}</p> : null}
+              {data.weather ? (
+                <p className="bold">{data.weather[0].main}</p>
+              ) : null}
             </div>
           </div>
 
@@ -71,6 +77,14 @@ function App() {
                   <p className="bold">{data.wind.speed} MPH</p>
                 ) : null}
                 <p className="bold">Wind Speed</p>
+              </div>
+              <div className="sunrise">
+                {data.sys ? <p className="bold">{moment.unix(data.sys.sunrise).format("hh:mm A")}</p> : null}
+                <p className="bold">Sunrise</p>
+              </div>
+              <div className="sunset">
+                {data.sys ? <p className="bold">{moment.unix(data.sys.sunset).format("hh:mm A")}</p> : null}
+                <p className="bold">Sunset</p>
               </div>
             </div>
           )}
