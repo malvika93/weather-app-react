@@ -84,7 +84,7 @@ h1 {
 }
 
 .app .bottom {
-  display: flex;
+  display: inline-flex;
   justify-content: space-evenly;
   text-align: center;
   width: 100%;
@@ -95,5 +95,5 @@ h1 {
 }
 
 .bold {
-  font-weight: 70;
+  font-weight: 7;
 }
